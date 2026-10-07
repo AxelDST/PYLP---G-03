@@ -1,0 +1,39 @@
+FROM ubuntu:latest
+
+ARG home_dir=/home
+ENV WEB_DOCUMENT_ROOT=$home_dir
+
+WORKDIR $home_dir
+
+ENV TERM=xterm\
+    TZ=America/Argentina/Cordoba\
+    DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update -y
+
+RUN apt-get install -y \
+    bzip2 \
+    cmake \
+    cpio \
+    curl \
+    g++ \
+    gcc \
+    gfortran \
+    git \
+    gosu \
+    libblas-dev \
+    liblapack-dev \
+    libopenmpi-dev \
+    openmpi-bin \
+    python3-dev \
+    python3-pip \
+    virtualenv \
+    wget \
+    vim       \
+    htop      
+
+# RUN groupadd -r curso && useradd --no-log-init -r -d ${home_dir} -g curso curso
+# RUN chmod 777 -R ${home_dir}
+# USER curso 
+
+ENTRYPOINT ["tail", "-f", "/dev/null"]
